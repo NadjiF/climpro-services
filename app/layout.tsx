@@ -1,3 +1,4 @@
+import React from 'react'
 import { Geist } from 'next/font/google'
 import './globals.css'
 
