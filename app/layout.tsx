@@ -11,7 +11,7 @@ export const metadata = {
   description: 'Spécialiste de la pose et entretien de climatisation en région toulousaine. Devis gratuit sous 24h.',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${geist.variable} font-sans antialiased`}>
