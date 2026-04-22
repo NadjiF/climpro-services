@@ -129,7 +129,7 @@ export default function Hero() {
           className="relative hidden lg:block overflow-hidden"
         >
           <img
-            src="/hero-climatisation.jpg"
+            src="/hero-tech.jpg"
             alt="Unités de climatisation"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -132,40 +132,54 @@ export default function WhyUs() {
         </motion.div>
 
         {/* Bandeau chiffres — sombre */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-24 bg-slate-900 rounded-3xl p-10 md:p-14 overflow-hidden"
+      {/* Bandeau chiffres — sombre avec image de fond */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+  className="relative mt-24 rounded-3xl overflow-hidden min-h-[380px] md:min-h-[340px] flex items-center"
+>
+  {/* Image de fond */}
+  <img
+    src="/hero-climatisation.jpg"
+    alt=""
+    className="absolute inset-0 w-full h-full object-cover"
+    style={{ objectPosition: 'center 30%' }}
+  />
+  {/* Overlay dégradé léger : assombri à gauche pour le texte, image visible à droite */}
+<div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-slate-900/40 to-slate-900/10" />
+{/* Vignette bleue pour unifier la palette */}
+<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#8FBFE0]/10" />
+
+  <div className="relative w-full p-10 md:p-14">
+    {/* Eyebrow */}
+    <div className="inline-flex items-center gap-2.5 text-[#8FBFE0] text-xs font-semibold tracking-[0.2em] uppercase mb-8">
+      <span className="w-6 h-px bg-[#8FBFE0]" />
+      En quelques chiffres
+    </div>
+
+    {/* Grille stats */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-3xl">
+      {stats.map((stat, i) => (
+        <div
+          key={stat.label}
+          className={`${i !== 0 ? 'md:border-l md:border-white/15 md:pl-6' : ''}`}
         >
-          {/* Halo lumineux décoratif */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#8FBFE0]/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#8FBFE0]/5 blur-3xl pointer-events-none" />
-
-          {/* Eyebrow */}
-          <div className="relative inline-flex items-center gap-2.5 text-[#8FBFE0] text-xs font-semibold tracking-[0.2em] uppercase mb-8">
-            <span className="w-6 h-px bg-[#8FBFE0]" />
-            En quelques chiffres
+          <div
+            className="font-display text-5xl md:text-6xl font-bold text-[#8FBFE0] tracking-tight leading-none"
+            style={{ textShadow: '0 0 40px rgba(143, 191, 224, 0.35)' }}
+          >
+            {stat.value}
           </div>
-
-          {/* Grille stats */}
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`${i !== 0 ? 'md:border-l md:border-white/10 md:pl-6' : ''}`}
-              >
-                <div className="font-display text-5xl md:text-6xl font-bold text-[#8FBFE0] tracking-tight leading-none">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-slate-300 mt-3 leading-tight">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          <div className="text-sm text-slate-200 mt-3 leading-tight">
+            {stat.label}
           </div>
-        </motion.div>
+        </div>
+      ))}
+    </div>
+  </div>
+</motion.div>
 
       </div>
     </section>
